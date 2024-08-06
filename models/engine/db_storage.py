@@ -84,22 +84,30 @@ class DBStorage:
         Returns:
             an object based on class name and its ID
         '''
-        obj_dict = models.storage.all(cls)
-        for k, v in obj_dict.items():
-            matchstring = cls + '.' + id
-            if k == matchstring:
-                return v
-
-        return None
+        if cls and id:
+            if cls in classes.values and isinstance(id, str):
+                all_obj = self.all(cls)
+                for key,value in all_obj.items():
+                    if key.split('.')[1]==id:
+                        return value
+            else:
+                return
+        return
 
     def count(self, cls=None):
         '''
-        counts number of objects of a class (if given)
+        counts number of objects in a class (if given)
         Args:
             cls (str): class name
         Returns:
             number of objects in class, if no class name given
             return total number of objects in database
         '''
-        obj_dict = models.storage.all(cls)
-        return len(obj_dict)
+        if not cls:
+            inst_all= self.all()
+            return len(inst_all)
+        if cls in classes.values():
+            inst_of_all = self.all(cls)
+            return len(inst_of_all)
+        if cls not in classes.values():
+            return
