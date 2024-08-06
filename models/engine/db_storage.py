@@ -108,7 +108,7 @@ class DBStorage:
             return len(inst_all)
         for clas, value in classes.items():
             if cls == clas or cls == value:
-            inst_of_all = self.all(cls)
-            return len(inst_of_all)
+                inst_of_all = self.all(cls)
+                return len(inst_of_all)
         if cls not in classes.values():
             return
