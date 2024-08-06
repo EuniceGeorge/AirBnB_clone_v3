@@ -5,7 +5,7 @@ api
 """
 from models import storage
 from api.v1.views import app_views
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, jsonify
 from os import getenv
 from flask_cors import CORS
 
@@ -21,7 +21,7 @@ def teardown_appcontext(self):
 
 
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found(error):
     """page_not_found"""
     return jsonify({"error": "Not found"}), 404
 
