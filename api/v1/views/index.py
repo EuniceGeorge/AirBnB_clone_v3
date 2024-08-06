@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
 """initializes a new route"""
+
 from api.v1.views import app_views
 from flask import jsonify, request, abort
 from models import storage
