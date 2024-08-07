@@ -11,7 +11,6 @@ from models.state import State
 from datetime import datetime
 import uuid
 
-# route to list all states
 
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 def list_states():
@@ -22,9 +21,6 @@ def list_states():
         list_states.append(state.to_dict())
     return jsonify(list_states)
 
-# route to get state by id
-
-@app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 def get_state():
     """retrieves all state """
     state = storage.get(State, state_id)
@@ -33,7 +29,6 @@ def get_state():
     else:
         abort(404)
 
-# route to delete a state via id
 @app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
 def delete_state():
     """Deletes a state by id """
@@ -45,7 +40,6 @@ def delete_state():
     else:
         abort(404)
 
-# route to create a state
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
 def create_state():
     """ create new state"""
@@ -60,7 +54,6 @@ def create_state():
     states.append(new_state.to_dict())
     return jsonify(states[0]), 201
     
-# route to update state by id
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
 def update_state():
     """ update state """
