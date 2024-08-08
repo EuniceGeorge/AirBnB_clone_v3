@@ -11,7 +11,8 @@ from models.state import State
 from datetime import datetime
 import uuid
 
-
+"""module: '/state'
+"""
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 def list_states():
     """ list all states"""
