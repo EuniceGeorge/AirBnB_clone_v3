@@ -11,7 +11,10 @@ from models.state import State
 from datetime import datetime
 import uuid
 
-"""module: '/state'
+"""module: '/states'
+
+Create a new view for State objects that 
+handles all default RESTFul API actions
 """
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 def list_states():
